@@ -1,7 +1,7 @@
 name: "GitHub OIDC AWS"
 on:
   push:
-    branches: [main]
+    branches: [new]
 
 permissions:
   id-token: write
@@ -16,7 +16,7 @@ jobs:
       - name: Configure AWS Credentials using OIDC
         uses: aws-actions/configure-aws-credentials@v4.1.0
         with:
-          role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
-          aws-region: us-east-1
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE1 }}
+          aws-region: ap-south-1
       - name: Test AWS credentials again
         run: aws sts get-caller-identity
